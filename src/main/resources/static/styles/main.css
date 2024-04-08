@@ -1,0 +1,46 @@
+.navbar-a-custom {
+    margin-top: 0px !important;
+    padding-top: 18px !important;
+}
+
+.card-body-custom {
+    height: 319px !important;
+}
+
+.card-header-custom {
+    margin-top: 10px;
+}
+.fs-4-custom {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 100px;
+}
+
+.img-pilt {
+    width: 658px !important;
+}
+
+.col-pilt {
+    padding-left: 0px  !important;
+}
+@media (min-width: 1200px) {
+    #head1 {
+        margin-left: -12px;
+        width: 102%;
+    }
+    #head2 {
+        margin-right: -12px;
+        width: 102%;
+    }
+}
+
+.form-group.col-md-4 {
+    display: flex;
+    align-items: center;
+}
+
+.two-button-custom {
+    width: 49% !important;
+}
+
+

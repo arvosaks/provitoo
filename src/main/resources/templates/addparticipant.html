@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head th:include="fragments/head :: headerFragment">
+	<title id="pageTitle">Osavõtjad</title>
+</head>
+<body class="bg-light">
+<div class="container">
+	<div th:replace="fragments/header :: header"></div>
+</div>
+<div class="container">&nbsp</div>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4 bg-primary text-white py-4">
+			<h3>Osavõtjad</h3>
+		</div>
+		<div class="col-lg-8 py-4" th:style="'background: url(/images/libled.jpg)'" >
+		</div>
+	</div>
+</div>
+<div class="container">
+	<form class="row"  action="#" th:action="@{/participant}" th:object="${participant}" method="post" >
+		<div class="col-lg-4">
+		</div>
+		<div class="col-lg-8" th:object="${addevent}">
+			<div class="row">
+				<h5 class="nav-item text-start form-group col-lg-12 text-primary">Osavõtjad:</h5>
+			</div>
+			<div class="row">
+				<div class="form-group col-lg-4">
+					<label class="mr-2 col-form-label-sm">Ürituse nimi:&nbsp;</label>
+				</div>
+				<div class="form-group col-lg-8" th:text="${addevent.name}"></div>
+			</div>
+			<div class="row">
+				<div class="form-group col-lg-4">
+					<label class="mr-2 col-form-label-sm">Toimumisaeg:&nbsp;</label>
+				</div>
+				<div class="form-group col-lg-8" th:text="${#dates.format(addevent.startAt, 'dd.MM.yyyy')}"></div>
+			</div>
+			<div class="row">
+				<div class="form-group col-lg-4">
+					<label class="mr-2 col-form-label-sm ">Koht:&nbsp;</label>
+				</div>
+				<div class="form-group col-lg-8" th:text="${addevent.place}">
+				</div>
+			</div>
+			<div class="row">
+				<h5 class="nav-item text-start form-group col-lg-12 text-primary">Osavõtjate lisamine</h5>
+			</div>
+
+			<div class="row">
+				<div class="radio-inline col-lg-3" data-bs-toggle="collapse" data-bs-target="#private" aria-expanded="false" aria-controls="private">
+						<input class="form-check-input" type="radio" name="sector" id="private_sector2" value="0" th:checked="${participant.isCompany}">
+						<label class="form-check-label"  >Eraisik</label>
+				</div>
+				<div class="radio-inline col-lg-3" data-bs-toggle="collapse" data-bs-target="#governmental" aria-expanded="false" aria-controls="governmental">
+						<input class="form-check-input" type="radio" name="sector" id="governmental_sector2" value="1" th:checked="${participant.isCompany} == false"/>
+						<label class="form-check-label" >Ettevõtte</label>
+				</div>
+			</div>
+
+			<div class="row" id="sector_descriptions">
+				<div class="collapse" id="private" data-bs-parent="#sector_descriptions">
+					<div class="row">
+						<div class="form-group col-lg-5 ">
+							<label for="appPersonDescription_description" class="mr-2 col-form-label-sm btn-block">Eesnimi:&nbsp;</label>
+						</div>
+						<div class="form-group col-lg-5">
+							<input th:field="${participant.appPersonDescription.firstName}" id="appPersonDescription_description" class="form-control form-control-sm" name="description"  cols="40" rows="5" ></input>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-lg-5 ">
+							<label for="description" class="mr-2 col-form-label-sm btn-block">Perenimi:&nbsp;</label>
+						</div>
+						<div class="form-group col-lg-5">
+							<input th:field="${participant.appPersonDescription.lastName}" id="description" class="form-control form-control-sm" name="description"  cols="40" rows="5" ></input>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-lg-5 ">
+							<label for="appPersonDescription.personalCode" class="mr-2 col-form-label-sm btn-block">Isikukood:&nbsp;</label>
+						</div>
+						<div class="form-group col-lg-5">
+							<input th:field="${participant.appPersonDescription.personalCode}" id="appPersonDescription.personalCode" class="form-control form-control-sm" name="description"  cols="40" rows="5" ></input>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-lg-5 ">
+							<label for="appPayment1" class="mr-2 col-form-label-sm btn-block">Makimisviis:&nbsp;</label>
+						</div>
+						<div class="form-group col-lg-5">
+							<input th:field="${participant.appPayment}" id="appPayment1" class="form-control form-control-sm" name="description"  cols="40" rows="5" ></input>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-lg-5 ">
+							<label for="appPersonDescription.description" class="mr-2 col-form-label-sm btn-block">Lisainfo:&nbsp;</label>
+						</div>
+						<div class="form-group col-lg-5">
+							<textarea th:field="${participant.appPersonDescription.description}" id="appPersonDescription.description" class="form-control form-control-sm" name="description"  cols="40" rows="5" ></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="collapse" id="governmental" data-bs-parent="#sector_descriptions">
+					<div class="row">
+						<div class="form-group col-lg-5 ">
+							<label for="appCompanyDescription.name" class="mr-2 col-form-label-sm btn-block">Ettevõtte juriidiline nimi:&nbsp;</label>
+						</div>
+						<div class="form-group col-lg-5">
+							<input th:field="${participant.appCompanyDescription.name}" id="appCompanyDescription.name" class="form-control form-control-sm" name="description"  cols="40" rows="5" ></input>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-lg-5 ">
+							<label for="appCompanyDescription.code" class="mr-2 col-form-label-sm btn-block">Ettevõtte registrikood :&nbsp;</label>
+						</div>
+						<div class="form-group col-lg-5">
+							<input th:field="${participant.appCompanyDescription.code}" id="appCompanyDescription.code" class="form-control form-control-sm" name="description"  cols="40" rows="5" ></input>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-lg-5 ">
+							<label for="appCompanyDescription.participantsCount" class="mr-2 col-form-label-sm btn-block">Ettevõttest tulevate osavõtjate arv:&nbsp;</label>
+						</div>
+						<div class="form-group col-lg-5">
+							<input th:field="${participant.appCompanyDescription.participantsCount}" id="appCompanyDescription.participantsCount" class="form-control form-control-sm" name="description"  cols="40" rows="5" ></input>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-lg-5 ">
+							<label for="appPayment2" class="mr-2 col-form-label-sm btn-block">Makimisviis:&nbsp;</label>
+						</div>
+						<div class="form-group col-lg-5">
+							<input th:field="${participant.appPayment}" id="appPayment2" class="form-control form-control-sm" name="description"  cols="40" rows="5" ></input>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-lg-5 ">
+							<label for="appCompanyDescription.companyDescription" class="mr-2 col-form-label-sm btn-block">Lisainfo:&nbsp;</label>
+						</div>
+						<div class="form-group col-lg-5">
+							<textarea th:field="${participant.appCompanyDescription.companyDescription}" id="appCompanyDescription.companyDescription" class="form-control form-control-sm" name="description"  cols="40" rows="5" ></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-lg-5">
+					<a class="btn btn-secondary two-button-custom" href="/">Tagasi</a>
+					<input type="submit" class="btn btn-primary two-button-custom" value="Lisa" />
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="container">
+	&nbsp;
+</div>
+<div th:replace="fragments/footer :: footer">&copy; 2024 </div>
+</div>
+</body>
+</html>

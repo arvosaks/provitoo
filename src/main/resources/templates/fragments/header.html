@@ -1,0 +1,21 @@
+<div th:fragment="header">
+    <div class="row">
+        <ul class="nav bg-white py-1">
+            <li class="nav-item col-lg-4 ">
+                <img th:src="@{/images/logo.svg}" alt="nullam" style="top: auto;margin-top: 8px;">
+            </li>
+            <li  th:classappend="${requestMappingValue!=null && requestMappingValue.equals('/') ? 'bg-primary':''}"   class="nav-item col-lg-1 text-center font-size-sm">
+                <a th:classappend="${requestMappingValue!=null && requestMappingValue.equals('/') ? 'text-white':''}"  class="nav-link text-uppercase navbar-a-custom " href="/" ><small>Avaleht</small></a>
+            </li>
+            <li  th:classappend="${requestMappingValue!=null && requestMappingValue.equals('/addevent') ? ' bg-primary':''}"   class="nav-item col-lg-2 text-start align-middle font-size-sm">
+                <a th:classappend="${requestMappingValue!=null && requestMappingValue.equals('/addevent') ? ' text-white':''}"   class="nav-link text-dark text-uppercase navbar-a-custom " href="/addevent" ><small>Ürituse lisamine</small></a>
+            </li>
+            <li class="nav-item col-lg-4 ">
+                &nbsp;
+            </li>
+            <li class="nav-item col-lg-1 float-right text-end" style="text-align: right;">
+                <img class="img-fluid float-right" th:src="@{/images/symbol.svg}" alt="nullam">
+            </li>
+        </ul>
+    </div>
+</div>

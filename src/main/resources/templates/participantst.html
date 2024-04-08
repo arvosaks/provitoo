@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head th:include="fragments/head :: headerFragment">
+    <title id="pageTitle">Avaleht</title>
+</head>
+<body class="bg-light">
+<div class="container">
+    <div th:replace="fragments/header :: header"></div>
+</div>
+<div class="container">&nbsp;</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 bg-primary text-white">
+            <p class="fs-4 fs-4-custom">Sed nec elit vestibulum, <b>tincidunt orci</b> et, sagittis ex.
+                Vestibulum rutrum <b>neque</b> suscipit ante mattis maximus.
+                Nulla non sapien <b>viverra, lobortis lorem non</b>, accumsan metus.</p>
+        </div>
+        <div class="col-lg-6 col-pilt">
+            <img th:src="@{images/pilt.jpg}" alt="pilt"  class="img-pilt">
+        </div>
+    </div>
+</div>
+<div class="container">&nbsp;</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h4 id="head1" class="bg-primary text-white text-center py-4 header-left">Tulevased uritused</h4>
+            <div th:each="tulev , iter : ${tulevased}" class="row">
+                <div class="col-lg-1" th:text="${iter.index + 1}+ '.'"></div>
+                <div class="col-lg-6"  th:text="${tulev.name}"></div>
+                <div class="col-lg-2"  th:text="${#dates.format(tulev.startAt, 'dd.MM.yyyy')}"></div>
+                <div class="col-lg-2"  ><a class="nav-link text-dark text-uppercase" th:href="@{/participantst/{id}(id=${tulev.id})}" >Osavõtjad</a></div>
+                <div class="col-lg-1"  >
+                    <a class="nav-link text-dark text-uppercase" th:href="@{/event/delete/{id}(id=${tulev.id})}" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h4 id="head2" class="bg-primary text-white text-center py-4 header-right">Toimunud uritused</h4>
+            <div th:each="toimuv , iter : ${toimunud}" class="row">
+                <div class="col-lg-1" th:text="${iter.index + 1}+ '.'">.</div>
+                <div class="col-lg-6" th:text="${toimuv.name}"></div>
+                <div class="col-lg-3" th:text="${#dates.format(toimuv.startAt, 'dd.MM.yyyy')}"></div>
+                <div class="col-lg-2" ><a class="nav-link text-dark text-uppercase" th:href="@{/participantst/{id}(id=${toimuv.id})}" >Osavõtjad</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer">&copy; 2024 </div>
+</div>
+</body>
+</html>

@@ -1,9 +1,8 @@
 package ee.rik.provitoo.dto;
 
-import jakarta.persistence.*;
+import ee.rik.provitoo.utils.PersonalCodeValidation;
 
 public class AppPersonDescriptionDTO {
-
 
     private Long id;
 
@@ -13,6 +12,7 @@ public class AppPersonDescriptionDTO {
 
     private String lastName;
 
+    @PersonalCodeValidation()
     private String personalCode;
 
     private String description;

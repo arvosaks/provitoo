@@ -17,10 +17,14 @@ public class AppPayment {
     private Long id;
 
     @Enumerated(EnumType.ORDINAL)
+    @Column(name = "payment_type")
     private AppPaymentType paymentType;
 
     @Column(nullable = true)
     private String name;
+
+    @OneToMany(mappedBy = "appPayment", fetch = FetchType.LAZY)
+    private List<AppParticipant> appParticipant;
 
     public void setId(Long id) {
         this.id = id;
@@ -28,6 +32,30 @@ public class AppPayment {
 
     public Long getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public AppPaymentType getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(AppPaymentType paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public List<AppParticipant> getAppParticipant() {
+        return appParticipant;
+    }
+
+    public void setAppParticipant(List<AppParticipant> appParticipant) {
+        this.appParticipant = appParticipant;
     }
 
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,14 +14,20 @@ public class AppEventDTO {
 
     private String name;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date startAt;
 
     private String place;
 
     private String description;
 
-    private List<AppParticipantDTO> userList;
+    private List<AppParticipantDTO> userList = new ArrayList<>();
+
+    public AppEventDTO(Long id) {
+        this.id = id;
+    }
+
+    public AppEventDTO() { }
 
     public Long getId() {
         return id;

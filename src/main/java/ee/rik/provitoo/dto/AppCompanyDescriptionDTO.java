@@ -1,13 +1,8 @@
 package ee.rik.provitoo.dto;
 
-import jakarta.persistence.*;
-
 public class AppCompanyDescriptionDTO {
 
     private Long id;
-
-
-    private AppParticipantDTO appParticipant;
 
     private String name;
 
@@ -25,13 +20,6 @@ public class AppCompanyDescriptionDTO {
         this.id = id;
     }
 
-    public AppParticipantDTO getAppParticipant() {
-        return appParticipant;
-    }
-
-    public void setAppParticipant(AppParticipantDTO appParticipant) {
-        this.appParticipant = appParticipant;
-    }
 
     public String getName() {
         return name;

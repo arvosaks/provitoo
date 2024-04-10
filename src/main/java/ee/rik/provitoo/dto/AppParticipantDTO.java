@@ -1,20 +1,25 @@
 package ee.rik.provitoo.dto;
 
-import jakarta.persistence.*;
+import ee.rik.provitoo.entity.AppPayment.AppPaymentType;
+import jakarta.validation.Valid;
 
 
 public class AppParticipantDTO {
 
     private Long id;
 
-    private AppPaymentDTO appPayment;
+    private AppPaymentType appPaymentCompany;
+
+    private AppPaymentType appPaymentPerson;
 
 
+    @Valid
     private AppCompanyDescriptionDTO appCompanyDescription;
 
+    @Valid
     private AppPersonDescriptionDTO appPersonDescription;
 
-    private boolean isCompany;
+    private boolean company;
 
     private AppEventDTO appEvent;
 
@@ -50,19 +55,27 @@ public class AppParticipantDTO {
         this.appPersonDescription = appPersonDescription;
     }
 
-    public boolean isCompany() {
-        return isCompany;
+    public boolean getCompany() {
+        return company;
     }
 
     public void setCompany(boolean company) {
-        isCompany = company;
+        this.company = company;
     }
 
-    public AppPaymentDTO getAppPayment() {
-        return appPayment;
+    public AppPaymentType getAppPaymentPerson() {
+        return appPaymentPerson;
     }
 
-    public void setAppPayment(AppPaymentDTO appPayment) {
-        this.appPayment = appPayment;
+    public void setAppPaymentPerson(AppPaymentType appPaymentPerson) {
+        this.appPaymentPerson = appPaymentPerson;
+    }
+
+    public AppPaymentType getAppPaymentCompany() {
+        return appPaymentCompany;
+    }
+
+    public void setAppPaymentCompany(AppPaymentType appPaymentCompany) {
+        this.appPaymentCompany = appPaymentCompany;
     }
 }

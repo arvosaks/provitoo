@@ -1,6 +1,8 @@
 package ee.rik.provitoo.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
@@ -18,7 +20,7 @@ public class AppEvent {
     @Column
     private String name;
 
-    @Column
+    @Column(name = "start_at")
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
     private Date startAt;
@@ -29,7 +31,7 @@ public class AppEvent {
     @Column(length = 1000)
     private String description;
 
-    @OneToMany(mappedBy = "appEvent")
+    @OneToMany(cascade=CascadeType.DETACH , mappedBy = "appEvent")
     private List<AppParticipant> userList;
 
     public Long getId() {

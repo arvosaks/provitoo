@@ -10,16 +10,13 @@ public class AppPersonDescription {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    private AppParticipant appParticipant;
-
-    @Column
+    @Column(name="first_name")
     private String firstName;
 
-    @Column
+    @Column(name="last_name")
     private String lastName;
 
-    @Column
+    @Column(name="personal_code")
     private String personalCode;
 
     @Column(length = 1500)
@@ -31,14 +28,6 @@ public class AppPersonDescription {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public AppParticipant getAppParticipant() {
-        return appParticipant;
-    }
-
-    public void setAppParticipant(AppParticipant appParticipant) {
-        this.appParticipant = appParticipant;
     }
 
     public String getFirstName() {

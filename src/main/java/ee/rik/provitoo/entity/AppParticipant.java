@@ -1,6 +1,8 @@
 package ee.rik.provitoo.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name="app_participant")
@@ -10,18 +12,22 @@ public class AppParticipant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     private AppPayment appPayment;
 
-    @OneToOne
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "Company_Description_id" )
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private AppCompanyDescription appCompanyDescription;
 
-    @OneToOne
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "Person_Description_id" )
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private AppPersonDescription appPersonDescription;
 
-    private boolean isCompany;
+    private boolean company;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.DETACH)
     @JoinColumn(name = "app_event_id")
     private AppEvent appEvent;
 
@@ -57,12 +63,12 @@ public class AppParticipant {
         this.appPersonDescription = appPersonDescription;
     }
 
-    public boolean isCompany() {
-        return isCompany;
+    public boolean getCompany() {
+        return company;
     }
 
     public void setCompany(boolean company) {
-        isCompany = company;
+        this.company = company;
     }
 
     public AppPayment getAppPayment() {

@@ -50,7 +50,6 @@ public class AppEvent {
         this.name = name;
     }
 
-
     public String getPlace() {
         return place;
     }

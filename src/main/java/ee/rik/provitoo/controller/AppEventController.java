@@ -29,7 +29,6 @@ public class AppEventController {
     private AppParticipantService appParticipantService;
 
     private static final String REQUEST_MAPPING_VALUE = "requestMappingValue";
-    private static final String IS_FROM_DB = "IS_FROM_DB";
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET)

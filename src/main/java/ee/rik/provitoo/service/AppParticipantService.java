@@ -122,26 +122,17 @@ public class AppParticipantService {
         return toDTO(original);
     }
 
-    public Page<AppParticipantDTO> query(AppParticipantDTO vO) {
-        throw new UnsupportedOperationException();
-    }
-
     private AppParticipantDTO toDTO(AppParticipant original) {
         AppParticipantDTO bean = new AppParticipantDTO();
         copyProperties(original, bean);
         return bean;
     }
 
-
-
     private AppParticipant requireOne(Long id) {
         return appParticipantRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Resource not found: " + id));
     }
 
-    public List<AppParticipant> getByEventId(Long eventid) {
-        return appParticipantRepository.findByAppEventId(eventid);
-    }
     private AppPayment createPayment(AppPayment.AppPaymentType appPaymentCompany){
         AppPayment payment = new AppPayment();
         payment.setPaymentType(appPaymentCompany);

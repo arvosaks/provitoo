@@ -1,6 +1,8 @@
 package ee.rik.provitoo.dto;
 
 import ee.rik.provitoo.utils.PersonalCodeValidation;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Size;
 
 public class AppPersonDescriptionDTO {
 
@@ -15,6 +17,7 @@ public class AppPersonDescriptionDTO {
     @PersonalCodeValidation()
     private String personalCode;
 
+    @Size(min = 0, max = 1500 , message="Eraisik lisainfo: Lubatud maksimaalselt 1500 tähemärki")
     private String description;
 
     public Long getId() {

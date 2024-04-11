@@ -1,5 +1,7 @@
 package ee.rik.provitoo.dto;
 
+import jakarta.validation.constraints.Size;
+
 public class AppCompanyDescriptionDTO {
 
     private Long id;
@@ -10,6 +12,7 @@ public class AppCompanyDescriptionDTO {
 
     private Integer participantsCount;
 
+    @Size(min = 0, max = 5000 , message="Ettevõte lisainfo: Lubatud maksimaalselt 5000 tähemärki")
     private String companyDescription;
 
     public Long getId() {

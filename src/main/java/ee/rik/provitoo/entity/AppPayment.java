@@ -1,7 +1,6 @@
 package ee.rik.provitoo.entity;
 
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity

@@ -16,10 +16,7 @@ import static java.lang.annotation.ElementType.PARAMETER;
 @Documented
 @Constraint(validatedBy = PersonalCodeValidator.class)
 public  @interface PersonalCodeValidation {
-    //error message
     public String message() default "Isikukood ei ole valiidne";
-    //represents group of constraints
     public Class<?>[] groups() default {};
-    //represents additional information about annotation
     public Class<? extends Payload>[] payload() default {};
 }

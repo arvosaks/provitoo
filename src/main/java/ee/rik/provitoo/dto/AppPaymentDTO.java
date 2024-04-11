@@ -1,7 +1,6 @@
 package ee.rik.provitoo.dto;
 
 import ee.rik.provitoo.entity.AppPayment;
-import jakarta.persistence.*;
 
 public class AppPaymentDTO {
 

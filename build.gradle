@@ -24,6 +24,8 @@ dependencies {
 	implementation 'org.postgresql:postgresql'
 	implementation 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.junit.jupiter:junit-jupiter-engine'
+	testImplementation 'org.junit.vintage:junit-vintage-engine'
 }
 
 tasks.named('test') {

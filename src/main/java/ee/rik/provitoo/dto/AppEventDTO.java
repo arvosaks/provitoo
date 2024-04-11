@@ -1,9 +1,8 @@
 package ee.rik.provitoo.dto;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +18,7 @@ public class AppEventDTO {
 
     private String place;
 
+    @Size(min = 0, max = 1000 , message="Ürituse lisainfo: Lubatud maksimaalselt 1000 tähemärki")
     private String description;
 
     private List<AppParticipantDTO> userList = new ArrayList<>();
@@ -44,7 +44,6 @@ public class AppEventDTO {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getPlace() {
         return place;

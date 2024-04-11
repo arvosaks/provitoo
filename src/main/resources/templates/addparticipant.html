@@ -18,7 +18,7 @@
 	</div>
 </div>
 <div class="container">
-	<form class="row" th:action="@{/participantst/{id}(id=${addevent.id})}" th:object="${participant}" method="post" >
+	<form class="row" id="addevent_form" th:action="@{/participantst/{id}(id=${addevent.id})}" th:object="${participant}" method="post" >
 		<div class="col-lg-4">
 			<input type="hidden" th:value="${participant.id}" th:attr="name='id'"/>
 			<input type="hidden" th:if="${participant.appPersonDescription}" th:value="${participant.appPersonDescription.id}" name="appPersonDescription.id"/>
@@ -192,5 +192,20 @@
 <div class="container">
 	<div th:replace="fragments/footer :: footer">&copy; 2024 </div>
 </div>
+<script>
+	$(function()
+	{
+		$("#addevent_form").submit(function()
+		{
+			var cmp = $('input[name="company"]:checked').val();
+			if(cmp == 'true') {
+				$('textarea[name="appPersonDescription.description"]').val('');
+			}else{
+				$('textarea[name="appCompanyDescription.companyDescription"]').val('');
+			}
+			return true;
+		});
+	});
+</script>
 </body>
 </html>

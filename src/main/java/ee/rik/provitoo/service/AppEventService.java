@@ -1,9 +1,7 @@
 package ee.rik.provitoo.service;
 
-import ee.rik.provitoo.dto.AppCompanyDescriptionDTO;
 import ee.rik.provitoo.dto.AppEventDTO;
 import ee.rik.provitoo.dto.AppParticipantDTO;
-import ee.rik.provitoo.dto.AppPersonDescriptionDTO;
 import ee.rik.provitoo.entity.AppEvent;
 import ee.rik.provitoo.entity.AppParticipant;
 import ee.rik.provitoo.repository.AppEventRepository;
@@ -11,7 +9,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -42,12 +39,6 @@ public class AppEventService {
             user.setAppEvent(null);
         }
         appEventRepository.delete(event);
-    }
-
-    public void update(Long id, AppEventDTO vO) {
-        AppEvent bean = requireOne(id);
-        BeanUtils.copyProperties(vO, bean);
-        appEventRepository.save(bean);
     }
 
     public AppEventDTO getById(Long id) {
